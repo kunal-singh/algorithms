@@ -9,7 +9,8 @@
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "eslint-plugin-import/extensions": "never"
   },
   "parserOptions": {
     "sourceType": "module",

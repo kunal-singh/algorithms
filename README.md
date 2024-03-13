@@ -3,7 +3,7 @@
 ## Arrays
 
 ### Prerequisites
-1. [Reverse](Arrays/reverse.js)
+1. [Reverse](Arrays/pre/reverse.js)
 
 ### Problems
 1. Two Sum 

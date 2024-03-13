@@ -1,1 +1,3 @@
-const hello = 'Hello';
+import Reverse from './pre/Reverse.js';
+
+Reverse();
