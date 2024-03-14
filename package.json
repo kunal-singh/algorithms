@@ -4,11 +4,10 @@
   "description": "Algorithms",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "prepare": "husky",
     "lint": "npx eslint '*.{js,jsx,ts,tsx}' --quiet --fix",
     "format": "npx prettier '*.{js,ts}' --write"
-
   },
   "author": "Kunal Singh",
   "license": "ISC",
@@ -30,6 +29,7 @@
     "husky": "^9.0.11",
     "jsdoc": "^4.0.2",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "vitest": "^1.3.1"
   }
 }

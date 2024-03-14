@@ -10,7 +10,7 @@
   ],
   "rules": {
     "prettier/prettier": "warn",
-    "eslint-plugin-import/extensions": "never"
+    "eslint-plugin-import/extensions": "never"  
   },
   "parserOptions": {
     "sourceType": "module",
