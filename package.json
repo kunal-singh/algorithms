@@ -6,8 +6,8 @@
   "scripts": {
     "test": "vitest",
     "prepare": "husky",
-    "lint": "npx eslint '*.{js,jsx,ts,tsx}' --quiet --fix",
-    "format": "npx prettier '*.{js,ts}' --write"
+    "lint": "npx eslint --quiet --fix",
+    "format": "npx prettier '**/*.js' --write"
   },
   "author": "Kunal Singh",
   "license": "ISC",
@@ -17,8 +17,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix"
+    "**/*.js": [
+      "prettier --write"
     ]
   },
   "devDependencies": {
