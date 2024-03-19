@@ -18,8 +18,8 @@
 ## Linked Lists
 
 ### Prerequisites
-1. [Singly Linked List](Linked-List/singly-linked-list.js)
-2. [Doubly Linked List](Linked-List/doubly-linked-list.js)
+1. [Singly Linked List](Linked-List/pre/singly-linked-list.js)
+2. [Doubly Linked List](Linked-List/pre/doubly-linked-list.js)
 3. [Singly Circular Linked List]()
 4. [Reverse Singly Linked List]()
 5. [Cycle Detection]()
