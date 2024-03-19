@@ -1,5 +1,5 @@
 import Reverse from "../pre/Reverse.js";
-import { expect, test } from 'vitest'
+import { expect, test } from 'vitest';
 
 test(`Running test for Reverse - expected`,() => {
     expect(Reverse([1,2,3])).toEqual([3,2,1]);
