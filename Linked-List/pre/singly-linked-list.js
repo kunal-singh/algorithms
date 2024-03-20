@@ -4,39 +4,84 @@
  */
 
 function Node(data, next) {
-  this.data = data;
-  this.next = next;
-  return this;
+  return {
+    data,
+    next: next ?? null
+  };
 }
 
-function add(element, index) {
-  return this;
-}
-
-function addFirst(element) {
+function addFirst(data) {
   const oldHead = this.headNode;
-  const newNode = Node(element, oldHead);
+  const newNode = Node(data, oldHead);
   this.headNode = newNode;
-  return this;
+  if (this.size === 0) {
+    this.tailNode = newNode;
+  }
+  this.size += 1;
+  return this.size;
 }
 
-function addLast(element) {}
-
-function addAt(element, index) {
-  return add(element, index);
+function addLast(data) {
+  if (!this.headNode) {
+    return this.addFirst(data);
+  }
+  const newNode = Node(data, null);
+  this.tailNode.next = newNode;
+  this.size += 1;
+  return this.size;
 }
 
-function isEmpty() {}
+function isEmpty() {
+  return this.size === 0;
+}
 
-function find(element) {}
+function addAt(index, data) {
+  if (this.size < index) {
+    throw new Error('Size smaller than given index');
+  }
+  if (this.size === 0 || index === 0) {
+    return this.addFirst(data);
+  }
+  let currentIndex = 0;
+  let currentNode = this.headNode;
+
+  while (currentNode && currentIndex < index - 1) {
+    currentNode = currentNode.next;
+    currentIndex += 1;
+  }
+  const newNode = Node(data, currentNode.next);
+  currentNode.next = newNode;
+  this.size += 1;
+  return this.size;
+}
+
+function addAtEnd(index, data) {
+  if (this.size < index) {
+    throw new Error('Size smaller than given index');
+  }
+  return this.addAt(this.size - index, data);
+}
+
+function find(data) {}
 
 function findNth(index) {}
 
-function deleteValue(element) {}
+function deleteValue(data) {}
 
 function deleteAt(index) {}
 
-function asArray() {}
+function asArray() {
+  if (this.size === 0) {
+    return [];
+  }
+  const arr = [];
+  let currentNode = this.headNode;
+  do {
+    arr.push(currentNode.data);
+    currentNode = currentNode.next;
+  } while (currentNode);
+  return arr;
+}
 
 function reverse() {}
 
@@ -50,7 +95,14 @@ const SinglyLinkedList = () => {
     addFirst,
     addLast,
     addAt,
+    addAtEnd,
     size,
+    get head() {
+      return headNode;
+    },
+    get tail() {
+      return tailNode;
+    },
     isEmpty,
     find,
     findNth,

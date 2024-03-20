@@ -41,6 +41,26 @@ describe('SinglyLinkedList', () => {
     expect(list.asArray()).toEqual([10, 30, 20, 40]);
   });
 
+  it('Check addAtEnd', () => {
+    const list = LinkedList();
+    expect(list.asArray()).toEqual([]);
+
+    expect(list.addAtEnd(0, 10)).toEqual(1);
+    expect(list.asArray()).toEqual([10]);
+
+    expect(list.addAtEnd(1, 20)).toEqual(2);
+    expect(list.asArray()).toEqual([20, 10]);
+
+    expect(list.addAtEnd(2, 30)).toEqual(3);
+    expect(list.asArray()).toEqual([30, 20, 10]);
+
+    expect(list.addAtEnd(3, 40)).toEqual(4);
+    expect(list.asArray()).toEqual([40, 30, 20, 10]);
+
+    expect(list.addAtEnd(2, 74)).toEqual(5);
+    expect(list.asArray()).toEqual([40, 30, 74, 20, 10]);
+  });
+
   it('Check removeLast', () => {
     const list = LinkedList();
     list.addLast(1);
@@ -139,20 +159,23 @@ describe('SinglyLinkedList', () => {
 
   it('Check head', () => {
     const list = LinkedList();
-    expect(list.head()).toBe(null);
+    expect(list.head).toBe(null);
 
     list.addLast(10);
-    expect(list.head()).toBe(10);
+    console.log(list.head);
+    expect(list.head).toBe(10);
+
+    console.log(list.head);
 
     list.addLast(20);
-    expect(list.head()).toBe(10);
+    expect(list.head).toBe(10);
 
     list.addFirst(30);
-    expect(list.head()).toBe(30);
+    expect(list.head).toBe(30);
 
     // check for a falsy head data
     list.addFirst(false);
-    expect(list.head()).toBe(false);
+    expect(list.head).toBe(false);
   });
 
   it('Check tail', () => {
@@ -175,16 +198,16 @@ describe('SinglyLinkedList', () => {
 
   it('Check size', () => {
     const list = LinkedList();
-    expect(list.size()).toBe(0);
+    expect(list.size).toBe(0);
 
     list.addLast(10);
-    expect(list.size()).toBe(1);
+    expect(list.size).toBe(1);
 
     list.addLast(20);
-    expect(list.size()).toBe(2);
+    expect(list.size).toBe(2);
 
     list.removeFirst();
-    expect(list.size()).toBe(1);
+    expect(list.size).toBe(1);
   });
 
   it('Middle node of linked list', () => {
@@ -241,7 +264,7 @@ describe('SinglyLinkedList', () => {
     list.addLast(30);
     list.addLast(40);
     list.addLast(50);
-    expect(list.size()).toEqual(5);
+    expect(list.size).toEqual(5);
     list.clean();
     expect(list.isEmpty()).toBe(true);
   });
