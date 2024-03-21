@@ -11,6 +11,9 @@ describe('SinglyLinkedList', () => {
 
     expect(list.addLast(5)).toEqual(2);
     expect(list.asArray()).toEqual([1, 5]);
+
+    expect(list.addLast(6)).toEqual(3);
+    expect(list.asArray()).toEqual([1, 5, 6]);
   });
 
   it('Check addFirst', () => {
@@ -22,6 +25,9 @@ describe('SinglyLinkedList', () => {
 
     expect(list.addFirst(5)).toEqual(2);
     expect(list.asArray()).toEqual([5, 1]);
+
+    expect(list.addFirst(6)).toEqual(3);
+    expect(list.asArray()).toEqual([6, 5, 1]);
   });
 
   it('Check addAt', () => {
@@ -162,10 +168,7 @@ describe('SinglyLinkedList', () => {
     expect(list.head).toBe(null);
 
     list.addLast(10);
-    console.log(list.head);
     expect(list.head).toBe(10);
-
-    console.log(list.head);
 
     list.addLast(20);
     expect(list.head).toBe(10);
@@ -180,20 +183,20 @@ describe('SinglyLinkedList', () => {
 
   it('Check tail', () => {
     const list = LinkedList();
-    expect(list.tail()).toBe(null);
+    expect(list.tail).toBe(null);
 
     list.addLast(10);
-    expect(list.tail()).toBe(10);
+    expect(list.tail).toBe(10);
 
     list.addLast(20);
-    expect(list.tail()).toBe(20);
+    expect(list.tail).toBe(20);
 
     list.addFirst(30);
-    expect(list.tail()).toBe(20);
+    expect(list.tail).toBe(20);
 
     // check for a falsy tail data
     list.addLast(false);
-    expect(list.tail()).toBe(false);
+    expect(list.tail).toBe(false);
   });
 
   it('Check size', () => {

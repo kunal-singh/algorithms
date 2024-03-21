@@ -27,6 +27,7 @@ function addLast(data) {
   }
   const newNode = Node(data, null);
   this.tailNode.next = newNode;
+  this.tailNode = newNode;
   this.size += 1;
   return this.size;
 }
@@ -103,9 +104,34 @@ function removeLast() {
   return data;
 }
 
-function remove(data) {}
+function removeAt(index) {
+  if (this.size === 0) {
+    throw new Error('Empty Linked List');
+  }
+  if (this.size <= index) {
+    throw new Error('Size lesser than given index');
+  }
+  let tempNode = this.headNode;
+  let currentIndex = 0;
+  while (true) {
+    if (currentIndex >= index - 1) {
+      break;
+    }
+    currentIndex += 1;
+    tempNode = tempNode.next;
+  }
+  if (!tempNode.next || index === 0) {
+    return this.removeFirst();
+  }
+  const { data, next } = tempNode.next;
+  delete tempNode.next;
+  tempNode.next = next;
 
-function removeAt(index) {}
+  this.size -= 1;
+  return data;
+}
+
+function remove(data) {}
 
 function asArray() {
   if (this.size === 0) {
@@ -146,10 +172,10 @@ const SinglyLinkedList = () => {
     addAtEnd,
     size,
     get head() {
-      return headNode;
+      return this.headNode ? this.headNode.data : null;
     },
     get tail() {
-      return tailNode;
+      return this.tailNode ? this.tailNode.data : null;
     },
     isEmpty,
     find,
