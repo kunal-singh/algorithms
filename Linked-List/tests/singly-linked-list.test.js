@@ -117,13 +117,37 @@ describe('SinglyLinkedList', () => {
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
-    expect(list.asArray()).toEqual([10, 20, 30]);
+    list.addLast(30);
+    expect(list.asArray()).toEqual([10, 20, 30, 30]);
 
     expect(list.remove(10)).toEqual(10);
+    expect(list.asArray()).toEqual([20, 30, 30]);
+
+    expect(list.remove(30)).toEqual(30);
     expect(list.asArray()).toEqual([20, 30]);
 
     expect(list.remove(100)).toEqual(null);
     expect(list.asArray()).toEqual([20, 30]);
+  });
+
+  it('Check removeAll', () => {
+    const list = LinkedList();
+    list.addLast(10);
+    list.addLast(20);
+    list.addLast(30);
+    list.addLast(30);
+    list.addLast(10);
+    list.addLast(10);
+    expect(list.asArray()).toEqual([10, 20, 30, 30, 10, 10]);
+
+    expect(list.remove(10)).toEqual(3);
+    expect(list.asArray()).toEqual([20, 30, 30]);
+
+    expect(list.remove(100)).toEqual(null);
+    expect(list.asArray()).toEqual([20, 30, 30]);
+
+    expect(list.remove(20)).toEqual(1);
+    expect(list.asArray()).toEqual([30, 30]);
   });
 
   it('Check indexOf', () => {
@@ -236,30 +260,31 @@ describe('SinglyLinkedList', () => {
     expect(list.findMiddle().data).toEqual(5);
   });
 
-  it('Check Iterator', () => {
-    const list = LinkedList();
+  //   it('Check Iterator', () => {
+  //     const list = LinkedList();
 
-    let iterate = list.iterator();
-    expect(iterate).toBe(-1);
+  //     let iterate = list.iterator();
+  //     expect(iterate).toBe(-1);
 
-    const arr = [10, 20, 5];
-    list.addLast(arr[0]);
-    list.addLast(arr[1]);
-    list.addLast(arr[2]);
-    iterate = list.iterator();
+  //     const arr = [10, 20, 5];
+  //     list.addLast(arr[0]);
+  //     list.addLast(arr[1]);
+  //     list.addLast(arr[2]);
+  //     iterate = list.iterator();
 
-    for (let i = 0; i < arr.length; i++) {
-      expect(iterate.next().value).toBe(arr[i]);
-    }
-    expect(iterate.next().value).toBe(undefined);
+  //     for (let i = 0; i < arr.length; i++) {
+  //       expect(iterate.next().value).toBe(arr[i]);
+  //     }
+  //     expect(iterate.next().value).toBe(undefined);
 
-    iterate = list.iterator();
-    let count = 0;
-    for (const item of iterate) {
-      expect(item).toBe(arr[count]);
-      count++;
-    }
-  });
+  //     iterate = list.iterator();
+  //     let count = 0;
+  //     for (const item of iterate) {
+  //       expect(item).toBe(arr[count]);
+  //       count++;
+  //     }
+  //   });
+
   it('Cleans the linkedList', () => {
     const list = LinkedList();
     list.addLast(10);

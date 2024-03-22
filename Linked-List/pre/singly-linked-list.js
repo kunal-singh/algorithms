@@ -131,7 +131,47 @@ function removeAt(index) {
   return data;
 }
 
-function remove(data) {}
+function remove(data) {
+  if (this.size === 0) {
+    throw new Error('Empty Linked List');
+  }
+  let tempNode = this.headNode;
+  if (!tempNode.next || tempNode.data === data)
+    return tempNode.data === data ? this.removeFirst() : null;
+  while (tempNode) {
+    if (tempNode.next && tempNode.next.data === data) break;
+    tempNode = tempNode.next;
+  }
+
+  if (!tempNode) return null;
+
+  const { next } = tempNode.next;
+  const removed = tempNode.next.data;
+  delete tempNode.next;
+  tempNode.next = next;
+  return removed;
+}
+
+function removeAll(data) {
+  if (this.size === 0) {
+    throw new Error('Empty Linked List');
+  }
+  let tempNode = this.headNode;
+  if (!tempNode.next || tempNode.data === data)
+    return tempNode.data === data ? this.removeFirst() : null;
+  while (tempNode) {
+    if (tempNode.next && tempNode.next.data === data) break;
+    tempNode = tempNode.next;
+  }
+
+  if (!tempNode) return null;
+
+  const { next } = tempNode.next;
+  const removed = tempNode.next.data;
+  delete tempNode.next;
+  tempNode.next = next;
+  return removed;
+}
 
 function asArray() {
   if (this.size === 0) {
@@ -181,6 +221,7 @@ const SinglyLinkedList = () => {
     find,
     findNth,
     remove,
+    removeAll,
     removeAt,
     removeFirst,
     removeLast,
