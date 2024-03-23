@@ -63,9 +63,23 @@ function addAtEnd(index, data) {
   return this.addAt(this.size - index, data);
 }
 
-function find(data) {}
+function indexOf(data) {
+  if (this.size === 0) {
+    throw new Error('Empty Linked List');
+  }
+  let tempNode = this.headNode;
+  let currentIndex = 0;
+  while (tempNode) {
+    if (tempNode.data === data) {
+      break;
+    }
+    currentIndex += 1;
+    tempNode = tempNode.next;
+  }
+  return currentIndex < this.size ? currentIndex : -1;
+}
 
-function findNth(index) {}
+function elementAt(index) {}
 
 function removeFirst() {
   if (this.size === 0) {
@@ -218,8 +232,8 @@ const SinglyLinkedList = () => {
       return this.tailNode ? this.tailNode.data : null;
     },
     isEmpty,
-    find,
-    findNth,
+    indexOf,
+    elementAt,
     remove,
     removeAll,
     removeAt,
