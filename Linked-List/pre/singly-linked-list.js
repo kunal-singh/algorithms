@@ -95,6 +95,23 @@ function elementAt(index) {
   return currentIndex < this.size ? tempNode.data : null;
 }
 
+function findMiddle() {
+  if (this.size === 0) {
+    throw new Error('Empty Linked List');
+  }
+  const middleIndex = Math.floor(this.size > 1 ? this.size / 2 : 0);
+  let tempNode = this.headNode;
+  let currentIndex = 0;
+  while (tempNode) {
+    if (currentIndex === middleIndex) {
+      break;
+    }
+    currentIndex += 1;
+    tempNode = tempNode.next;
+  }
+  return currentIndex < this.size ? tempNode : null;
+}
+
 function removeFirst() {
   if (this.size === 0) {
     throw new Error('Empty Linked List');
@@ -174,10 +191,9 @@ function remove(data) {
   if (!tempNode) return null;
 
   const { next } = tempNode.next;
-  const removed = tempNode.next.data;
   delete tempNode.next;
   tempNode.next = next;
-  return removed;
+  return data;
 }
 
 function removeAll(data) {
@@ -185,20 +201,19 @@ function removeAll(data) {
     throw new Error('Empty Linked List');
   }
   let tempNode = this.headNode;
-  if (!tempNode.next || tempNode.data === data)
-    return tempNode.data === data ? this.removeFirst() : null;
+  let occurences = 0;
   while (tempNode) {
-    if (tempNode.next && tempNode.next.data === data) break;
+    if (tempNode.data === data) {
+      this.removeFirst();
+      occurences += 1;
+      if (this.size === 0) break;
+    } else if (tempNode.next.data === data) {
+      tempNode.next = tempNode.next.next;
+      occurences += 1;
+    }
     tempNode = tempNode.next;
   }
-
-  if (!tempNode) return null;
-
-  const { next } = tempNode.next;
-  const removed = tempNode.next.data;
-  delete tempNode.next;
-  tempNode.next = next;
-  return removed;
+  return occurences;
 }
 
 function asArray() {
@@ -241,6 +256,7 @@ const SinglyLinkedList = () => {
     isEmpty,
     indexOf,
     elementAt,
+    findMiddle,
     remove,
     removeAll,
     removeAt,

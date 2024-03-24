@@ -140,14 +140,17 @@ describe('SinglyLinkedList', () => {
     list.addLast(10);
     expect(list.asArray()).toEqual([10, 20, 30, 30, 10, 10]);
 
-    expect(list.remove(10)).toEqual(3);
+    expect(list.removeAll(10)).toEqual(3);
     expect(list.asArray()).toEqual([20, 30, 30]);
 
-    expect(list.remove(100)).toEqual(null);
+    expect(list.removeAll(100)).toEqual(0);
     expect(list.asArray()).toEqual([20, 30, 30]);
 
-    expect(list.remove(20)).toEqual(1);
+    expect(list.removeAll(20)).toEqual(1);
     expect(list.asArray()).toEqual([30, 30]);
+
+    expect(list.removeAll(30)).toEqual(2);
+    expect(list.asArray()).toEqual([]);
   });
 
   it('Check indexOf', () => {
