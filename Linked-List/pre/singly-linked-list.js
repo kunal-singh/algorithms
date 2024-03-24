@@ -79,7 +79,21 @@ function indexOf(data) {
   return currentIndex < this.size ? currentIndex : -1;
 }
 
-function elementAt(index) {}
+function elementAt(index) {
+  if (this.size === 0) {
+    throw new Error('Empty Linked List');
+  }
+  let tempNode = this.headNode;
+  let currentIndex = 0;
+  while (tempNode) {
+    if (currentIndex === index) {
+      break;
+    }
+    currentIndex += 1;
+    tempNode = tempNode.next;
+  }
+  return currentIndex < this.size ? tempNode.data : null;
+}
 
 function removeFirst() {
   if (this.size === 0) {
@@ -203,13 +217,6 @@ function asArray() {
 function reverse() {}
 
 function destroy() {
-  if (this.headNode) {
-    while (true) {
-      const tempHead = this.headNode.next;
-      delete this.headNode;
-      if (!tempHead) break;
-    }
-  }
   this.tailNode = null;
   this.headNode = null;
   this.size = 0;

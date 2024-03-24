@@ -293,7 +293,7 @@ describe('SinglyLinkedList', () => {
     list.addLast(40);
     list.addLast(50);
     expect(list.size).toEqual(5);
-    list.clean();
+    list.destroy();
     expect(list.isEmpty()).toBe(true);
   });
 
