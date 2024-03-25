@@ -204,15 +204,19 @@ function removeAll(data) {
   let occurences = 0;
   while (tempNode) {
     if (tempNode.data === data) {
-      this.removeFirst();
+      this.headNode = tempNode.next;
+      tempNode = tempNode.next;
       occurences += 1;
-      if (this.size === 0) break;
-    } else if (tempNode.next.data === data) {
+      this.size -= 1;
+    } else if (tempNode.next && tempNode.next.data === data) {
       tempNode.next = tempNode.next.next;
       occurences += 1;
+      this.size -= 1;
+    } else {
+      tempNode = tempNode.next;
     }
-    tempNode = tempNode.next;
   }
+
   return occurences;
 }
 
