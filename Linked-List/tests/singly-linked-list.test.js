@@ -142,15 +142,19 @@ describe('SinglyLinkedList', () => {
 
     expect(list.removeAll(10)).toEqual(3);
     expect(list.asArray()).toEqual([20, 30, 30]);
+    expect(list.tail).toEqual(30);
 
     expect(list.removeAll(100)).toEqual(0);
     expect(list.asArray()).toEqual([20, 30, 30]);
+    expect(list.tail).toEqual(30);
 
     expect(list.removeAll(20)).toEqual(1);
     expect(list.asArray()).toEqual([30, 30]);
+    expect(list.tail).toEqual(30);
 
     expect(list.removeAll(30)).toEqual(2);
     expect(list.asArray()).toEqual([]);
+    expect(list.tail).toEqual(null);
   });
 
   it('Check indexOf', () => {
@@ -306,7 +310,12 @@ describe('SinglyLinkedList', () => {
     expect(tempNode.asArray()).toEqual([]);
 
     // Creating list
-    const headNode = new LinkedList([10, 20, 30, 40, 50]);
+    const headNode = LinkedList();
+    headNode.addLast(10);
+    headNode.addLast(20);
+    headNode.addLast(30);
+    headNode.addLast(40);
+    headNode.addLast(50);
 
     // Case 1: when k = 0 => List should be unaffected
     headNode.rotateListRight(0);
@@ -326,8 +335,13 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Reverse a Linked List', () => {
-    const list = LinkedList([4, 3, 1]);
+    const list = LinkedList();
+    list.addLast(10);
+    list.addLast(20);
+    list.addLast(30);
+    list.addLast(40);
+    list.addLast(50);
     list.reverse();
-    expect(list.asArray()).toEqual([1, 3, 4]);
+    expect(list.asArray()).toEqual([50, 40, 30, 20, 10]);
   });
 });

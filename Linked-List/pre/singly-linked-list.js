@@ -203,11 +203,15 @@ function removeAll(data) {
   let tempNode = this.headNode;
   let occurences = 0;
   while (tempNode) {
+    if (!tempNode.next) {
+      this.tailNode = tempNode;
+    }
     if (tempNode.data === data) {
       this.headNode = tempNode.next;
       tempNode = tempNode.next;
       occurences += 1;
       this.size -= 1;
+      if (this.size === 0) this.tailNode = null;
     } else if (tempNode.next && tempNode.next.data === data) {
       tempNode.next = tempNode.next.next;
       occurences += 1;
@@ -233,7 +237,36 @@ function asArray() {
   return arr;
 }
 
-function reverse() {}
+function reverse() {
+  let prev = null;
+  let current = this.headNode;
+  let next = null;
+  while (current) {
+    next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  const tail = this.tailNode;
+  this.tailNode = this.headNode;
+  this.headNode = tail;
+}
+
+function rotateListRight(k) {
+  if (k === 0) return;
+  const actualK = k % this.size;
+  const newTailIndex = this.size - (actualK + 1);
+  let tempNode = this.headNode;
+  let i = 0;
+  while (i < newTailIndex) {
+    tempNode = tempNode.next;
+    i += 1;
+  }
+  this.tailNode.next = this.headNode;
+  this.headNode = tempNode.next;
+  this.tailNode = tempNode;
+  this.tailNode.next = null;
+}
 
 function destroy() {
   this.tailNode = null;
@@ -268,6 +301,7 @@ const SinglyLinkedList = () => {
     removeLast,
     asArray,
     reverse,
+    rotateListRight,
     destroy
   };
 };
