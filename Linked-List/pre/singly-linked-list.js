@@ -32,6 +32,20 @@ function addLast(data) {
   return this.size;
 }
 
+function iterator() {
+  if (this.size === 0) {
+    return -1;
+  }
+  let tempNode = this.headNode;
+  const iterate = function* () {
+    while (tempNode) {
+      yield tempNode.data;
+      tempNode = tempNode.next;
+    }
+  };
+  return iterate();
+}
+
 function isEmpty() {
   return this.size === 0;
 }
@@ -290,6 +304,7 @@ const SinglyLinkedList = () => {
     get tail() {
       return this.tailNode ? this.tailNode.data : null;
     },
+    iterator,
     isEmpty,
     indexOf,
     elementAt,

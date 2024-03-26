@@ -267,30 +267,32 @@ describe('SinglyLinkedList', () => {
     expect(list.findMiddle().data).toEqual(5);
   });
 
-  //   it('Check Iterator', () => {
-  //     const list = LinkedList();
+  it('Check Iterator', () => {
+    const list = LinkedList();
 
-  //     let iterate = list.iterator();
-  //     expect(iterate).toBe(-1);
+    let iterate = list.iterator();
+    expect(iterate).toBe(-1);
 
-  //     const arr = [10, 20, 5];
-  //     list.addLast(arr[0]);
-  //     list.addLast(arr[1]);
-  //     list.addLast(arr[2]);
-  //     iterate = list.iterator();
+    const arr = [10, 20, 5];
+    list.addLast(arr[0]);
+    list.addLast(arr[1]);
+    list.addLast(arr[2]);
+    iterate = list.iterator();
 
-  //     for (let i = 0; i < arr.length; i++) {
-  //       expect(iterate.next().value).toBe(arr[i]);
-  //     }
-  //     expect(iterate.next().value).toBe(undefined);
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < arr.length; i++) {
+      expect(iterate.next().value).toBe(arr[i]);
+    }
+    expect(iterate.next().value).toBe(undefined);
 
-  //     iterate = list.iterator();
-  //     let count = 0;
-  //     for (const item of iterate) {
-  //       expect(item).toBe(arr[count]);
-  //       count++;
-  //     }
-  //   });
+    iterate = list.iterator();
+    let count = 0;
+    // eslint-disable-next-line no-restricted-syntax
+    for (const item of iterate) {
+      expect(item).toBe(arr[count]);
+      count += 1;
+    }
+  });
 
   it('Cleans the linkedList', () => {
     const list = LinkedList();
