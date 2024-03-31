@@ -289,9 +289,9 @@ function destroy() {
 }
 
 const SinglyLinkedList = () => {
-  let headNode = null;
-  let tailNode = null;
-  let size = 0;
+  const headNode = null;
+  const tailNode = null;
+  const size = 0;
   return {
     addFirst,
     addLast,

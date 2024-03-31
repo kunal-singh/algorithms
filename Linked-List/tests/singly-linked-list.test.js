@@ -2,6 +2,11 @@ import { describe, it, expect } from 'vitest';
 import LinkedList from '../pre/singly-linked-list.js';
 
 describe('SinglyLinkedList', () => {
+  it('Check constructor', () => {
+    const list = LinkedList([1, 2, 3, 4, 5]);
+    expect(list.asArray()).toEqual([1, 2, 3, 4, 5]);
+  });
+
   it('Check addLast', () => {
     const list = LinkedList();
     expect(list.asArray()).toEqual([]);
