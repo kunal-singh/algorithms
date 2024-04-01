@@ -4,17 +4,17 @@ import BinarySearchTree from '../pre/binary-tree.js';
 describe('Binary Search Tree', () => {
   it('Check add', () => {
     const tree = BinarySearchTree();
-    expect(tree.level()).toEqual(0);
+    expect(tree.height()).toEqual(0);
     tree.add(1);
     tree.add(2);
     tree.add(3);
     tree.add(4);
     tree.add(5);
-    expect(tree.level()).toEqual(4);
+    expect(tree.height()).toEqual(5);
   });
   it('Check remove', () => {
     const tree = BinarySearchTree();
-    expect(tree.level()).toEqual(0);
+    expect(tree.height()).toEqual(0);
     tree.add(1);
     tree.add(2);
     tree.add(3);
@@ -22,17 +22,17 @@ describe('Binary Search Tree', () => {
     tree.add(5);
 
     tree.remove(1);
-    expect(tree.level()).toEqual(3);
+    expect(tree.height()).toEqual(3);
 
     tree.remove(2);
-    expect(tree.level()).toEqual(3);
+    expect(tree.height()).toEqual(3);
 
     tree.remove(70);
-    expect(tree.level()).toEqual(3);
+    expect(tree.height()).toEqual(3);
   });
   it('Check search', () => {
     const tree = BinarySearchTree();
-    expect(tree.level()).toEqual(0);
+    expect(tree.height()).toEqual(0);
     tree.add(1);
     tree.add(2);
     tree.add(3);
@@ -47,7 +47,7 @@ describe('Binary Search Tree', () => {
   });
   it('Check preorder traversal', () => {
     const tree = BinarySearchTree();
-    expect(tree.level()).toEqual(0);
+    expect(tree.height()).toEqual(0);
     tree.add(8);
     tree.add(3);
     tree.add(10);
@@ -69,7 +69,7 @@ describe('Binary Search Tree', () => {
   });
   it('Check postorder traversal', () => {
     const tree = BinarySearchTree();
-    expect(tree.level()).toEqual(0);
+    expect(tree.height()).toEqual(0);
     tree.add(8);
     tree.add(3);
     tree.add(10);
@@ -90,7 +90,7 @@ describe('Binary Search Tree', () => {
   });
   it('Check inorder traversal', () => {
     const tree = BinarySearchTree();
-    expect(tree.level()).toEqual(0);
+    expect(tree.height()).toEqual(0);
     tree.add(8);
     tree.add(3);
     tree.add(10);
@@ -112,7 +112,7 @@ describe('Binary Search Tree', () => {
   });
   it('Check levelorder traversal', () => {
     const tree = BinarySearchTree();
-    expect(tree.level()).toEqual(0);
+    expect(tree.height()).toEqual(0);
     tree.add(8);
     tree.add(3);
     tree.add(10);
@@ -123,7 +123,7 @@ describe('Binary Search Tree', () => {
     tree.add(7);
     tree.add(13);
 
-    const iterator = tree.levelorderIterator();
+    const iterator = tree.heightorderIterator();
     const preorder = [8, 3, 10, 1, 6, 14, 4, 7, 13];
     let count = 0;
     // eslint-disable-next-line no-restricted-syntax
