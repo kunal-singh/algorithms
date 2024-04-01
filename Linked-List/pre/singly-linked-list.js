@@ -289,7 +289,9 @@ function destroy() {
 }
 
 const SinglyLinkedList = () => {
+  // eslint-disable-next-line no-unused-vars
   const headNode = null;
+  // eslint-disable-next-line no-unused-vars
   const tailNode = null;
   const size = 0;
   return {
