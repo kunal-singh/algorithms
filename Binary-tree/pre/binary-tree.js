@@ -30,7 +30,28 @@ function add(data) {
   }
 }
 
-function remove() {}
+function remove(data) {
+  if (!this.headNode) {
+    return;
+  }
+  let tempNode = this.headNode;
+  while (tempNode) {
+    if (tempNode.data < data) {
+      if (!tempNode.right) {
+        tempNode.right = newNode;
+        break;
+      }
+      tempNode = tempNode.right;
+    } else if (tempNode.data > data) {
+      if (!tempNode.left) {
+        tempNode.left = newNode;
+        break;
+      }
+      tempNode = tempNode.left;
+    } else {
+    }
+  }
+}
 
 function search() {}
 
@@ -40,7 +61,6 @@ function getHeight(headNode) {
   }
   const leftHeight = getHeight(headNode.left);
   const rightHeight = getHeight(headNode.right);
-  console.log(leftHeight, rightHeight, headNode.data);
   return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
 }
 
@@ -48,7 +68,17 @@ function height() {
   return getHeight(this.headNode);
 }
 
-function inorderIterator() {}
+function inorder(node) {
+  if (!node) {
+    return [];
+  }
+  return [...inorder(node.left), node.data, ...inorder(node.right)];
+}
+
+function inorderIterator() {
+  console.log(inorder(this.headNode));
+  return inorder(this.headNode);
+}
 
 function preorderIterator() {}
 
@@ -59,8 +89,6 @@ function levelorderIterator() {}
 function isFull() {}
 
 function isComplete() {}
-
-function toArray(iterator) {}
 
 const BinarySearchTree = () => {
   const headNode = null;
