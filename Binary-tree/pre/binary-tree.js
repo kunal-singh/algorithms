@@ -59,11 +59,22 @@ function findMax() {
 
 // eslint-disable-next-line no-underscore-dangle
 function _remove(node, data) {
-  const searchedNode = search(node, data);
-  if (!searchedNode) return null;
-
-  if (searchedNode.left && searchedNode.right) {
+  if (node.data > data) {
+    node.left = node.left && _remove(node.left, data);
+  } else if (node.data < data) {
+    node.right = node.right && _remove(node.right, data);
+  } else if (!node.left && !node.right) {
+    return null;
+  } else if (node.left) {
+    const leftMax = max(node.left);
+    node.data = leftMax;
+    node.left = _remove(node.left, leftMax);
+  } else {
+    const rightMin = min(node.right);
+    node.data = rightMin;
+    node.right = node.right && _remove(node.right, rightMin);
   }
+  return node;
 }
 
 function remove(data) {

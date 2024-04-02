@@ -12,31 +12,6 @@ describe('Binary Search Tree', () => {
     tree.add(5);
     expect(tree.height()).toEqual(5);
   });
-  it('Check remove', () => {
-    const tree = BinarySearchTree();
-    expect(tree.height()).toEqual(0);
-
-    tree.add(8);
-    tree.add(3);
-    tree.add(10);
-    tree.add(1);
-    tree.add(6);
-    tree.add(14);
-    tree.add(4);
-    tree.add(7);
-    tree.add(13);
-
-    expect(tree.height()).toEqual(4);
-
-    // tree.remove(8);
-    // expect(tree.height()).toEqual(4);
-
-    // tree.remove(2);
-    // expect(tree.height()).toEqual(3);
-
-    // tree.remove(70);
-    // expect(tree.height()).toEqual(2);
-  });
   it('Check search', () => {
     const tree = BinarySearchTree();
     expect(tree.height()).toEqual(0);
@@ -59,6 +34,43 @@ describe('Binary Search Tree', () => {
 
     element = tree.find(13);
     expect(element.data).toEqual(13);
+  });
+  it('Check remove', () => {
+    const tree = BinarySearchTree();
+    expect(tree.height()).toEqual(0);
+
+    tree.add(8);
+    tree.add(3);
+    tree.add(10);
+    tree.add(1);
+    tree.add(6);
+    tree.add(14);
+    tree.add(4);
+    tree.add(7);
+    tree.add(13);
+
+    function check(iterator, sequence) {
+      let count = 0;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const item of iterator) {
+        expect(item).toBe(sequence[count]);
+        count += 1;
+      }
+    }
+
+    check(tree.inorderIterator(), [1, 3, 4, 6, 7, 8, 10, 13, 14]);
+
+    tree.remove(74);
+    check(tree.inorderIterator(), [1, 3, 4, 6, 7, 8, 10, 13, 14]);
+
+    tree.remove(8);
+    check(tree.inorderIterator(), [1, 3, 4, 6, 7, 10, 13, 14]);
+
+    tree.remove(1);
+    check(tree.inorderIterator(), [3, 4, 6, 7, 10, 13, 14]);
+
+    tree.remove(10);
+    check(tree.inorderIterator(), [3, 4, 6, 7, 13, 14]);
   });
   it('Check findMin', () => {
     const tree = BinarySearchTree();
