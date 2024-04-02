@@ -66,11 +66,11 @@ describe('Binary Search Tree', () => {
     tree.add(13);
 
     const iterator = tree.preorderIterator();
-    const preorder = [8, 3, 1, 6, 4, 7, 10, 14, 13];
+    const sequence = [8, 3, 1, 6, 4, 7, 10, 14, 13];
     let count = 0;
     // eslint-disable-next-line no-restricted-syntax
     for (const item of iterator) {
-      expect(item).toBe(preorder[count]);
+      expect(item).toBe(sequence[count]);
       count += 1;
     }
   });
@@ -87,11 +87,11 @@ describe('Binary Search Tree', () => {
     tree.add(7);
     tree.add(13);
     const iterator = tree.postorderIterator();
-    const preorder = [1, 4, 7, 6, 3, 13, 14, 10, 8];
+    const sequence = [1, 4, 7, 6, 3, 13, 14, 10, 8];
     let count = 0;
     // eslint-disable-next-line no-restricted-syntax
     for (const item of iterator) {
-      expect(item).toBe(preorder[count]);
+      expect(item).toBe(sequence[count]);
       count += 1;
     }
   });
@@ -109,11 +109,11 @@ describe('Binary Search Tree', () => {
     tree.add(13);
 
     const iterator = tree.inorderIterator();
-    const preorder = [1, 3, 4, 6, 7, 8, 10, 13, 14];
+    const sequence = [1, 3, 4, 6, 7, 8, 10, 13, 14];
     let count = 0;
     // eslint-disable-next-line no-restricted-syntax
     for (const item of iterator) {
-      expect(item).toBe(preorder[count]);
+      expect(item).toBe(sequence[count]);
       count += 1;
     }
   });
@@ -131,11 +131,11 @@ describe('Binary Search Tree', () => {
     tree.add(13);
 
     const iterator = tree.heightorderIterator();
-    const preorder = [8, 3, 10, 1, 6, 14, 4, 7, 13];
+    const sequence = [8, 3, 10, 1, 6, 14, 4, 7, 13];
     let count = 0;
     // eslint-disable-next-line no-restricted-syntax
     for (const item of iterator) {
-      expect(item).toBe(preorder[count]);
+      expect(item).toBe(sequence[count]);
       count += 1;
     }
   });

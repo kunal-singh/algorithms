@@ -76,13 +76,31 @@ function inorder(node) {
 }
 
 function inorderIterator() {
-  console.log(inorder(this.headNode));
   return inorder(this.headNode);
 }
 
-function preorderIterator() {}
+function preorder(node) {
+  if (!node) {
+    return [];
+  }
+  return [node.data, ...preorder(node.left), ...preorder(node.right)];
+}
 
-function postorderIterator() {}
+function preorderIterator() {
+  console.log(preorder(this.headNode));
+  return preorder(this.headNode);
+}
+
+function postorder(node) {
+  if (!node) {
+    return [];
+  }
+  return [...postorder(node.left), ...postorder(node.right), node.data];
+}
+
+function postorderIterator() {
+  return postorder(this.headNode);
+}
 
 function levelorderIterator() {}
 
