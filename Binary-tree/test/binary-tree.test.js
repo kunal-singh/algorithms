@@ -40,17 +40,59 @@ describe('Binary Search Tree', () => {
   it('Check search', () => {
     const tree = BinarySearchTree();
     expect(tree.height()).toEqual(0);
-    tree.add(1);
-    tree.add(2);
+
+    tree.add(8);
     tree.add(3);
+    tree.add(10);
+    tree.add(1);
+    tree.add(6);
+    tree.add(14);
     tree.add(4);
-    tree.add(5);
+    tree.add(7);
+    tree.add(13);
 
-    let element = tree.search(1);
-    expect(element).toBeTruthy();
+    let element = tree.find(17);
+    expect(element).toBe(null);
 
-    element = tree.search(7);
-    expect(element).toEqual(null);
+    element = tree.find(6);
+    expect(element.data).toBe(6);
+
+    element = tree.find(13);
+    expect(element.data).toEqual(13);
+  });
+  it('Check findMin', () => {
+    const tree = BinarySearchTree();
+    expect(tree.height()).toEqual(0);
+
+    tree.add(8);
+    tree.add(3);
+    tree.add(10);
+    tree.add(1);
+    tree.add(6);
+    tree.add(14);
+    tree.add(4);
+    tree.add(7);
+    tree.add(13);
+
+    const element = tree.findMin();
+    expect(element).toBe(1);
+  });
+  it('Check findMax', () => {
+    const tree = BinarySearchTree();
+    expect(tree.height()).toEqual(0);
+
+    tree.add(8);
+    tree.add(3);
+    tree.add(10);
+    tree.add(1);
+    tree.add(6);
+    tree.add(14);
+    tree.add(4);
+    tree.add(7);
+    tree.add(13);
+
+    const element = tree.findMax();
+    expect(element).toBe(14);
   });
   it('Check preorder traversal', () => {
     const tree = BinarySearchTree();

@@ -30,30 +30,51 @@ function add(data) {
   }
 }
 
-function remove(data) {
-  if (!this.headNode) {
-    return;
+function search(node, data) {
+  if (!node) return null;
+  if (node.data > data) {
+    return search(node.left, data);
   }
-  let tempNode = this.headNode;
-  while (tempNode) {
-    if (tempNode.data < data) {
-      if (!tempNode.right) {
-        tempNode.right = newNode;
-        break;
-      }
-      tempNode = tempNode.right;
-    } else if (tempNode.data > data) {
-      if (!tempNode.left) {
-        tempNode.left = newNode;
-        break;
-      }
-      tempNode = tempNode.left;
-    } else {
-    }
+  if (node.data < data) {
+    return search(node.right, data);
+  }
+  return node;
+}
+
+function min(node) {
+  return node.left ? min(node.left) : node.data;
+}
+
+function max(node) {
+  return node.right ? max(node.right) : node.data;
+}
+
+function findMin() {
+  return min(this.headNode);
+}
+
+function findMax() {
+  return max(this.headNode);
+}
+
+// eslint-disable-next-line no-underscore-dangle
+function _remove(node, data) {
+  const searchedNode = search(node, data);
+  if (!searchedNode) return null;
+
+  if (searchedNode.left && searchedNode.right) {
   }
 }
 
-function search() {}
+function remove(data) {
+  if (!this.headNode) return;
+  _remove(this.headNode, data);
+}
+
+function find(data) {
+  if (!this.headNode) return null;
+  return search(this.headNode, data);
+}
 
 function getHeight(headNode) {
   if (!headNode) {
@@ -87,7 +108,6 @@ function preorder(node) {
 }
 
 function preorderIterator() {
-  console.log(preorder(this.headNode));
   return preorder(this.headNode);
 }
 
@@ -102,7 +122,13 @@ function postorderIterator() {
   return postorder(this.headNode);
 }
 
-function levelorderIterator() {}
+function levelorder(node) {
+  return [];
+}
+
+function levelorderIterator() {
+  return levelorder(this.headNode);
+}
 
 function isFull() {}
 
@@ -113,8 +139,10 @@ const BinarySearchTree = () => {
   return {
     add,
     remove,
-    search,
+    find,
     height,
+    findMin,
+    findMax,
     inorderIterator,
     preorderIterator,
     postorderIterator,
