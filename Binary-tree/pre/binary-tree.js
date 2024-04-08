@@ -60,18 +60,24 @@ function findMax() {
 // eslint-disable-next-line no-underscore-dangle
 function _remove(node, data) {
   if (node.data > data) {
+    // eslint-disable-next-line no-param-reassign
     node.left = node.left && _remove(node.left, data);
   } else if (node.data < data) {
+    // eslint-disable-next-line no-param-reassign
     node.right = node.right && _remove(node.right, data);
   } else if (!node.left && !node.right) {
     return null;
   } else if (node.left) {
     const leftMax = max(node.left);
+    // eslint-disable-next-line no-param-reassign
     node.data = leftMax;
+    // eslint-disable-next-line no-param-reassign
     node.left = _remove(node.left, leftMax);
   } else {
     const rightMin = min(node.right);
+    // eslint-disable-next-line no-param-reassign
     node.data = rightMin;
+    // eslint-disable-next-line no-param-reassign
     node.right = node.right && _remove(node.right, rightMin);
   }
   return node;

@@ -1,3 +1,3 @@
-import Reverse from './pre/Reverse.js';
+function TwoSum() {}
 
-Reverse();
+export default TwoSum;
