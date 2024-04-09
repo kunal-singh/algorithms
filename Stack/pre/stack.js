@@ -29,6 +29,7 @@ const Stack = (function () {
   // eslint-disable-next-line no-console
   Stack.prototype.view = function (output = (v) => console.log(v)) {
     for (let i = 0; i < this.top; i += 1) {
+      console.log(this.values[i]);
       output(this.values[i]);
     }
   };
