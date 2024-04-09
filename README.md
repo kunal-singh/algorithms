@@ -36,7 +36,7 @@
 
 ### Prerequisites
 
-1. [Stack]()
+1. [Stack](Stack/pre/stack.js)
 
 ### Problems
 
