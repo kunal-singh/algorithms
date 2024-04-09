@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import TwoSum from './two-sum.js';
+import TwoSum from '../two-sum.js';
 
 describe('Two sum', () => {
   it('test case 1', () => {
