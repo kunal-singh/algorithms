@@ -40,4 +40,4 @@
 
 ### Problems
 
-1. [Valid Parantheses]()
+1. [Valid Parantheses](Stack/valid-parantheses.js)
