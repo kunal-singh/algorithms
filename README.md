@@ -12,7 +12,7 @@
    - [source](Arrays/two-sum.js)
    - [leetcode](https://leetcode.com/problems/two-sum/description/)
 2. Best time to buy and sell stock
-   - [source](Arrays/best-time-stock.js)
+   -  source
    - [leetcode](https://leetcode.com/problems/two-sum/)
 
 ## Linked Lists
@@ -20,10 +20,10 @@
 ### Prerequisites
 
 1. [Singly Linked List](Linked-List/pre/singly-linked-list.js)
-2. [Doubly Linked List](Linked-List/pre/doubly-linked-list.js)
-3. [Singly Circular Linked List]()
-4. [Reverse Singly Linked List]()
-5. [Cycle Detection]()
+2. Doubly Linked List
+3. Singly Circular Linked List
+4. Reverse Singly Linked List
+5. Cycle Detection
 
 ### Problems
 
@@ -40,4 +40,6 @@
 
 ### Problems
 
-1. [Valid Parantheses](Stack/valid-parantheses.js)
+1. Valid Parantheses
+   -[source](Stack/valid-parantheses.js)
+   -[leetcode](https://leetcode.com/problems/valid-parentheses)

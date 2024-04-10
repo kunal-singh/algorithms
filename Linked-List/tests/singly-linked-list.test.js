@@ -3,12 +3,12 @@ import LinkedList from '../pre/singly-linked-list.js';
 
 describe('SinglyLinkedList', () => {
   it('Check constructor', () => {
-    const list = LinkedList([1, 2, 3, 4, 5]);
+    const list = new LinkedList([1, 2, 3, 4, 5]);
     expect(list.asArray()).toEqual([1, 2, 3, 4, 5]);
   });
 
   it('Check addLast', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     expect(list.asArray()).toEqual([]);
 
     expect(list.addLast(1)).toEqual(1);
@@ -22,7 +22,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check addFirst', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     expect(list.asArray()).toEqual([]);
 
     expect(list.addFirst(1)).toEqual(1);
@@ -36,7 +36,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check addAt', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     expect(list.asArray()).toEqual([]);
 
     expect(list.addAt(0, 10)).toEqual(1);
@@ -53,7 +53,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check addAtEnd', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     expect(list.asArray()).toEqual([]);
 
     expect(list.addAtEnd(0, 10)).toEqual(1);
@@ -73,7 +73,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check removeLast', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(1);
     list.addLast(2);
     expect(list.asArray()).toEqual([1, 2]);
@@ -86,7 +86,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check removeFirst', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(1);
     list.addLast(2);
     expect(list.asArray()).toEqual([1, 2]);
@@ -99,7 +99,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check removeAt', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
@@ -118,7 +118,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check remove', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
@@ -136,7 +136,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check removeAll', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
@@ -147,23 +147,23 @@ describe('SinglyLinkedList', () => {
 
     expect(list.removeAll(10)).toEqual(3);
     expect(list.asArray()).toEqual([20, 30, 30]);
-    expect(list.tail).toEqual(30);
+    expect(list.tail()).toEqual(30);
 
     expect(list.removeAll(100)).toEqual(0);
     expect(list.asArray()).toEqual([20, 30, 30]);
-    expect(list.tail).toEqual(30);
+    expect(list.tail()).toEqual(30);
 
     expect(list.removeAll(20)).toEqual(1);
     expect(list.asArray()).toEqual([30, 30]);
-    expect(list.tail).toEqual(30);
+    expect(list.tail()).toEqual(30);
 
     expect(list.removeAll(30)).toEqual(2);
     expect(list.asArray()).toEqual([]);
-    expect(list.tail).toEqual(null);
+    expect(list.tail()).toEqual(null);
   });
 
   it('Check indexOf', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
@@ -176,7 +176,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check elementAt', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
@@ -189,7 +189,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check isEmpty', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     expect(list.isEmpty()).toBe(true);
     list.addLast(10);
     list.addLast(20);
@@ -200,43 +200,43 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check head', () => {
-    const list = LinkedList();
-    expect(list.head).toBe(null);
+    const list = new LinkedList();
+    expect(list.head()).toBe(null);
 
     list.addLast(10);
-    expect(list.head).toBe(10);
+    expect(list.head()).toBe(10);
 
     list.addLast(20);
-    expect(list.head).toBe(10);
+    expect(list.head()).toBe(10);
 
     list.addFirst(30);
-    expect(list.head).toBe(30);
+    expect(list.head()).toBe(30);
 
     // check for a falsy head data
     list.addFirst(false);
-    expect(list.head).toBe(false);
+    expect(list.head()).toBe(false);
   });
 
   it('Check tail', () => {
-    const list = LinkedList();
-    expect(list.tail).toBe(null);
+    const list = new LinkedList();
+    expect(list.tail()).toBeNull();
 
     list.addLast(10);
-    expect(list.tail).toBe(10);
+    expect(list.tail()).toBe(10);
 
     list.addLast(20);
-    expect(list.tail).toBe(20);
+    expect(list.tail()).toBe(20);
 
     list.addFirst(30);
-    expect(list.tail).toBe(20);
+    expect(list.tail()).toBe(20);
 
     // check for a falsy tail data
     list.addLast(false);
-    expect(list.tail).toBe(false);
+    expect(list.tail()).toBe(false);
   });
 
   it('Check size', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     expect(list.size).toBe(0);
 
     list.addLast(10);
@@ -250,7 +250,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Middle node of linked list', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addFirst(1);
 
     // Middle node for list having single node
@@ -273,7 +273,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Check Iterator', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
 
     let iterate = list.iterator();
     expect(iterate).toBe(-1);
@@ -300,7 +300,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Cleans the linkedList', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
@@ -313,11 +313,11 @@ describe('SinglyLinkedList', () => {
 
   it('should shift every node by k steps towards right, shifts tail nodes towards the start and change head of the list', () => {
     // Case 0: When head of list is null
-    const tempNode = LinkedList();
+    const tempNode = new LinkedList();
     expect(tempNode.asArray()).toEqual([]);
 
     // Creating list
-    const headNode = LinkedList();
+    const headNode = new LinkedList();
     headNode.addLast(10);
     headNode.addLast(20);
     headNode.addLast(30);
@@ -342,7 +342,7 @@ describe('SinglyLinkedList', () => {
   });
 
   it('Reverse a Linked List', () => {
-    const list = LinkedList();
+    const list = new LinkedList();
     list.addLast(10);
     list.addLast(20);
     list.addLast(30);
