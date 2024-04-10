@@ -28,9 +28,8 @@
 ### Problems
 
 1. Merge two sorted lists
-
-- [source]()
-- [leetcode]()
+- [source](Linked-List/merge-sorted.js)
+- [leetcode](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
 ## Stack
 
