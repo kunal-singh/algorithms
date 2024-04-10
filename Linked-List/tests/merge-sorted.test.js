@@ -4,8 +4,8 @@ import SinglyLinkedList from '../pre/singly-linked-list.js';
 
 describe('Check merge sorted', () => {
   it('test case 1', () => {
-    const list1 = SinglyLinkedList([1, 2, 4]);
-    const list2 = SinglyLinkedList([1, 3, 4]);
+    const list1 = new SinglyLinkedList([1, 2, 4]);
+    const list2 = new SinglyLinkedList([1, 3, 4]);
     const resultList = mergeSortedList(list1, list2);
     const resultArray = resultList.asArray();
     const expectedResult = [1, 1, 2, 3, 4, 4];
@@ -15,8 +15,8 @@ describe('Check merge sorted', () => {
     }
   });
   it('test case 2', () => {
-    const list1 = SinglyLinkedList([]);
-    const list2 = SinglyLinkedList([]);
+    const list1 = new SinglyLinkedList([]);
+    const list2 = new SinglyLinkedList([]);
     const resultList = mergeSortedList(list1, list2);
     const resultArray = resultList.asArray();
     const expectedResult = [];
@@ -26,8 +26,9 @@ describe('Check merge sorted', () => {
     }
   });
   it('test case 3', () => {
-    const list1 = SinglyLinkedList([]);
-    const list2 = SinglyLinkedList([0]);
+    const list1 = new SinglyLinkedList([]);
+    const list2 = new SinglyLinkedList([0]);
+    console.log(list1.asArray(), list2.asArray());
     const resultList = mergeSortedList(list1, list2);
     const resultArray = resultList.asArray();
     const expectedResult = [0];

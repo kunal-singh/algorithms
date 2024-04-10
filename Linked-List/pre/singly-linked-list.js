@@ -21,7 +21,14 @@ const SinglyLinkedList = (function () {
     this.size = 0;
     if (Array.isArray(initialValues) && initialValues.length) {
       for (let i = 0; i < initialValues.length; i += 1) {
-        this.addLast(initialValues[i]);
+        const newNode = new Node(initialValues[i], null);
+        if (this.size === 0) {
+          this.headNode = newNode;
+          this.tailNode = newNode;
+        }
+        this.tailNode.next = newNode;
+        this.tailNode = newNode;
+        this.size += 1;
       }
     }
   }
