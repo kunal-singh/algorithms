@@ -1,5 +1,15 @@
 # Algorithms
 
+
+## Strings
+
+### Problems
+
+1. Valid Palindrome
+ - [source](Strings/valid-palindrome.js)
+ - [leetcode](https://leetcode.com/problems/valid-palindrome/description/)
+
+
 ## Arrays
 
 ### Prerequisites
@@ -40,5 +50,5 @@
 ### Problems
 
 1. Valid Parantheses
-   -[source](Stack/valid-parantheses.js)
-   -[leetcode](https://leetcode.com/problems/valid-parentheses)
+   - [source](Stack/valid-parantheses.js)
+   - [leetcode](https://leetcode.com/problems/valid-parentheses)
