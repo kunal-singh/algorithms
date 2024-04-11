@@ -12,8 +12,8 @@
    - [source](Arrays/two-sum.js)
    - [leetcode](https://leetcode.com/problems/two-sum/description/)
 2. Best time to buy and sell stock
-   -  source
-   - [leetcode](https://leetcode.com/problems/two-sum/)
+   -  [source](Arrays/best-time-to-buy-stock.js)
+   - [leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
 ## Linked Lists
 

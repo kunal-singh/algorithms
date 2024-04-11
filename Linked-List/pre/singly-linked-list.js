@@ -25,9 +25,10 @@ const SinglyLinkedList = (function () {
         if (this.size === 0) {
           this.headNode = newNode;
           this.tailNode = newNode;
+        } else {
+          this.tailNode.next = newNode;
+          this.tailNode = newNode;
         }
-        this.tailNode.next = newNode;
-        this.tailNode = newNode;
         this.size += 1;
       }
     }

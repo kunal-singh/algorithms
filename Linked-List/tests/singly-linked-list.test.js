@@ -5,6 +5,9 @@ describe('SinglyLinkedList', () => {
   it('Check constructor', () => {
     const list = new LinkedList([1, 2, 3, 4, 5]);
     expect(list.asArray()).toEqual([1, 2, 3, 4, 5]);
+
+    const list2 = new LinkedList([0]);
+    expect(list2.asArray()).toEqual([0]);
   });
 
   it('Check addLast', () => {

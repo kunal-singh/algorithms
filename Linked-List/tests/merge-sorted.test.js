@@ -28,7 +28,6 @@ describe('Check merge sorted', () => {
   it('test case 3', () => {
     const list1 = new SinglyLinkedList([]);
     const list2 = new SinglyLinkedList([0]);
-    console.log(list1.asArray(), list2.asArray());
     const resultList = mergeSortedList(list1, list2);
     const resultArray = resultList.asArray();
     const expectedResult = [0];
