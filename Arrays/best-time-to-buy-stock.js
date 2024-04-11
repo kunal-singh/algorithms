@@ -1,11 +1,12 @@
 const maxProfit = function (prices) {
   let profit = 0;
-  let max = null;
+  let min = prices[0];
   for (let i = 0; i < prices.length; i += 1) {
-    if (max === null) {
-      max = prices[i];
-    } else if (max - prices[i] > profit) {
-      profit = max - prices[i];
+    if (min > prices[i]) {
+      min = prices[i];
+    }
+    if (prices[i] - min > profit) {
+      profit = prices[i] - min;
     }
   }
   return profit;
