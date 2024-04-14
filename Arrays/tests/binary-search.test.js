@@ -11,4 +11,7 @@ describe('Binary Search', () => {
   it('test case 3', () => {
     expect(binarySearch([2, 5], 2)).toEqual(0);
   });
+  it('test case 4', () => {
+    expect(binarySearch([-1, 0, 3, 5, 9, 12], -1)).toEqual(0);
+  });
 });
