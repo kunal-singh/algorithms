@@ -1,30 +1,18 @@
+const search = function (arr, l, r, x) {
+  if (r >= l) {
+    const mid = l + Math.floor((r - l) / 2);
+
+    if (arr[mid] === x) return mid;
+
+    if (arr[mid] > x) return search(arr, l, mid - 1, x);
+
+    return search(arr, mid + 1, r, x);
+  }
+  return -1;
+};
+
 const binarySearch = function (nums, target) {
-  if (nums.length === 0) {
-    console.log(`returning with 0 length`);
-    return -1;
-  }
-  // if (nums.length === 1) return nums[0] === target ? 0 : -1;
-  const middle = Math.floor(nums.length / 2);
-  let index;
-  console.log(nums, middle, '------');
-  if (nums[middle] > target) {
-    index = binarySearch(nums.slice(0, middle), target);
-    console.log(
-      `returning from first part`,
-      index === -1 ? -1 : middle - index - 1
-    );
-    return index === -1 ? -1 : middle - index - 1;
-  }
-  if (nums[middle] < target) {
-    index = binarySearch(nums.slice(middle + 1), target);
-    console.log(
-      `returning from second part`,
-      index === -1 ? -1 : middle + index + 1
-    );
-    return index === -1 ? -1 : middle + index + 1;
-  }
-  console.log(`returning from middle found`, middle);
-  return middle;
+  return search(nums, 0, nums.length - 1, target);
 };
 
 export default binarySearch;
