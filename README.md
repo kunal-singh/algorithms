@@ -24,6 +24,9 @@
 2. Best time to buy and sell stock
    -  [source](Arrays/best-time-to-buy-stock.js)
    - [leetcode](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+3. Binary Search
+   - [source](Arrays/binary-search.js)
+   - [leetcode](https://leetcode.com/problems/binary-search/description/)   
 
 ## Linked Lists
 
@@ -52,3 +55,12 @@
 1. Valid Parantheses
    - [source](Stack/valid-parantheses.js)
    - [leetcode](https://leetcode.com/problems/valid-parentheses)
+
+
+
+## Graph
+
+### Prerequisites
+   
+   1. [Graph](Graph/pre/graph.js)
+
