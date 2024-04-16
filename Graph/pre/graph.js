@@ -2,6 +2,7 @@ import Queue from '../../Queue/pre/queue.js';
 import Stack from '../../Stack/pre/stack.js';
 
 const Graph = (function () {
+  // eslint-disable-next-line no-shadow
   function Graph() {
     this.adjacencyMap = new Map();
   }
@@ -35,6 +36,21 @@ const Graph = (function () {
           this.adjacencyMap.get(key).filter((v) => v !== vertex)
         );
       }
+    }
+  };
+
+  Graph.prototype.removeEdge = function (v1, v2) {
+    if (this.adjacencyMap.has(v1) && this.adjacencyMap.has(v2)) {
+      const v1Edges = this.adjacencyMap.get(v1);
+      const v2Edges = this.adjacencyMap.get(v2);
+      this.adjacencyMap.set(
+        v1,
+        v1Edges.filter((v) => v !== v2)
+      );
+      this.adjacencyMap.set(
+        v2,
+        v2Edges.filter((v) => v !== v1)
+      );
     }
   };
 
