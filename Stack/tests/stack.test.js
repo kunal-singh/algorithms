@@ -23,7 +23,7 @@ describe('Stack', () => {
     stack.push(4);
     expect(stack.size()).toEqual(4);
 
-    const arr = [1, 2, 3, 4];
+    const arr = [4, 3, 2, 1];
     let count = 0;
     stack.view((v) => {
       expect(v).toEqual(arr[count]);

@@ -35,11 +35,18 @@ const Graph = (function () {
     }
   };
 
-  Graph.prototype.DFS = function (vertex) {};
+  Graph.prototype.DFS = function (vertex) {
+    console.log(this.adjacencyMap);
+    return [];
+  };
 
   Graph.prototype.DFSIterative = function (vertex) {};
 
-  Graph.prototype.BFS = function (vertex) {};
+  Graph.prototype.BFS = function (vertex) {
+    const BFS = [];
+
+    return BFS;
+  };
 
   return Graph;
 })();
