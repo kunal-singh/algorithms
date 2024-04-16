@@ -1,3 +1,6 @@
+import Queue from '../../Queue/pre/queue.js';
+import Stack from '../../Stack/pre/stack.js';
+
 const Graph = (function () {
   function Graph() {
     this.adjacencyMap = new Map();
@@ -35,16 +38,54 @@ const Graph = (function () {
     }
   };
 
+  function DFSUtil(adjacencyMap, vertex, visited) {
+    if (visited.has(vertex)) return [];
+    const DFS = [];
+    visited.set(vertex, true);
+    DFS.push(vertex);
+    adjacencyMap.get(vertex).forEach((el) => {
+      DFS.push(...DFSUtil(adjacencyMap, el, visited));
+    });
+    return DFS;
+  }
+
   Graph.prototype.DFS = function (vertex) {
-    console.log(this.adjacencyMap);
-    return [];
+    return DFSUtil(this.adjacencyMap, vertex, new Map());
   };
 
-  Graph.prototype.DFSIterative = function (vertex) {};
+  Graph.prototype.DFSIterative = function (vertex) {
+    const DFS = [];
+    const stack = new Stack();
+    const visited = new Map();
+    stack.push(vertex);
+    while (stack.size()) {
+      const element = stack.pop();
+      if (!visited.has(element)) {
+        DFS.push(element);
+        visited.set(element, true);
+        this.adjacencyMap.get(element).forEach((el) => {
+          stack.push(el);
+        });
+      }
+    }
+    return DFS;
+  };
 
   Graph.prototype.BFS = function (vertex) {
     const BFS = [];
-
+    const queue = new Queue();
+    const visited = new Map();
+    queue.enqueue(vertex);
+    while (queue.size()) {
+      const element = queue.dequeue();
+      if (!visited.has(element)) {
+        BFS.push(element);
+        visited.set(element, true);
+        this.adjacencyMap.get(element).forEach((el) => {
+          queue.enqueue(el);
+        });
+      }
+    }
     return BFS;
   };
 

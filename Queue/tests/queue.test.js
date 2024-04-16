@@ -5,22 +5,22 @@ describe('Queue', () => {
   it('testing basic operations', () => {
     const queue = new Queue();
     expect(queue.size()).toBe(0);
-    queue.push(1);
-    queue.push(2);
-    queue.push(3);
-    queue.push(4);
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
     expect(queue.size()).toEqual(4);
     expect(queue.peek()).toEqual(1);
-    expect(queue.pop()).toEqual(1);
-    expect(queue.pop()).toEqual(2);
+    expect(queue.dequeue()).toEqual(1);
+    expect(queue.dequeue()).toEqual(2);
   });
   it('testing Queue view utility', () => {
     const queue = new Queue();
     expect(queue.size()).toBe(0);
-    queue.push(1);
-    queue.push(2);
-    queue.push(3);
-    queue.push(4);
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    queue.enqueue(4);
     expect(queue.size()).toEqual(4);
 
     const arr = [1, 2, 3, 4];

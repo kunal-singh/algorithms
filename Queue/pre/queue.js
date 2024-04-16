@@ -7,13 +7,13 @@ const Queue = (function () {
     this.values = [];
     this.last = 0;
   }
-  Queue.prototype.push = function (element) {
+  Queue.prototype.enqueue = function (element) {
     this.values[this.last] = element;
     this.last += 1;
     return this.last;
   };
 
-  Queue.prototype.pop = function () {
+  Queue.prototype.dequeue = function () {
     if (this.last === 0) {
       throw new Error('Queue is empty');
     }
@@ -23,7 +23,6 @@ const Queue = (function () {
   };
 
   Queue.prototype.peek = function () {
-    console.log(this.values);
     return this.values[0];
   };
 
