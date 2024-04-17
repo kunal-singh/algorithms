@@ -18,11 +18,11 @@ describe('Test Matrix', () => {
   ]);
 
   it('Check DFS', () => {
-    const DFSList = matrix.DFS([0, 0]);
-    expect(DFSList).toEqual([-1, 2, 3, 8, 1, 0, 9, 0, 1]);
+    const DFSList = matrix2.DFS([0, 0]);
+    expect(DFSList).toEqual([-1, 0, 1, 0, 1, 8, 9, 2, 3]);
   });
   it('Check BFS', () => {
-    const BFSList = matrix.DFS([0, 0]);
+    const BFSList = matrix.BFS([0, 0]);
     expect(BFSList).toEqual([
       1, 2, 5, 3, 6, 9, 4, 7, 10, 13, 8, 11, 14, 12, 15, 16
     ]);
