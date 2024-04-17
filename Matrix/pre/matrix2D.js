@@ -12,14 +12,16 @@ const Matrix2D = (function () {
     return this.matrix;
   };
 
+  function BFSUtil() {}
+
   Matrix2D.prototype.BFS = function (coords) {
     const [i, j] = coords;
-    console.log(i, j);
   };
+
+  function DFSUtil() {}
 
   Matrix2D.prototype.DFS = function (coords) {
     const [i, j] = coords;
-    console.log(i, j);
   };
 
   return Matrix2D;
