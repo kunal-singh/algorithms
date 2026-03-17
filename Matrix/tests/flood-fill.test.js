@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import floodFill from '../flood-fill.js';
 
 describe('Test Flood fill', () => {
-  it('Test Case 1', () => {
+  it('fills connected region, stops at boundary', () => {
     expect(
       floodFill(
         [
@@ -21,7 +21,7 @@ describe('Test Flood fill', () => {
     ]);
   });
 
-  it('Test Case 2', () => {
+  it('no-op when starting pixel color equals new color', () => {
     expect(
       floodFill(
         [
@@ -35,6 +35,46 @@ describe('Test Flood fill', () => {
     ).toEqual([
       [0, 0, 0],
       [0, 0, 0]
+    ]);
+  });
+
+  it('fills a single-pixel grid', () => {
+    expect(floodFill([[1]], 0, 0, 3)).toEqual([[3]]);
+  });
+
+  it('fills entire grid when all pixels share the same color', () => {
+    expect(
+      floodFill(
+        [
+          [1, 1],
+          [1, 1]
+        ],
+        0,
+        0,
+        5
+      )
+    ).toEqual([
+      [5, 5],
+      [5, 5]
+    ]);
+  });
+
+  it('does not bleed into non-contiguous same-color cells', () => {
+    expect(
+      floodFill(
+        [
+          [1, 0, 1],
+          [0, 0, 0],
+          [1, 0, 1]
+        ],
+        0,
+        0,
+        9
+      )
+    ).toEqual([
+      [9, 0, 1],
+      [0, 0, 0],
+      [1, 0, 1]
     ]);
   });
 });

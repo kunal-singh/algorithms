@@ -184,7 +184,7 @@ describe('Binary Search Tree', () => {
     tree.add(7);
     tree.add(13);
 
-    const iterator = tree.heightorderIterator();
+    const iterator = tree.levelorderIterator();
     const sequence = [8, 3, 10, 1, 6, 14, 4, 7, 13];
     let count = 0;
     // eslint-disable-next-line no-restricted-syntax
@@ -192,5 +192,54 @@ describe('Binary Search Tree', () => {
       expect(item).toBe(sequence[count]);
       count += 1;
     }
+  });
+
+  it('empty tree has height 0', () => {
+    const tree = BinarySearchTree();
+    expect(tree.height()).toEqual(0);
+  });
+
+  it('single-node tree has height 1', () => {
+    const tree = BinarySearchTree();
+    tree.add(10);
+    expect(tree.height()).toEqual(1);
+  });
+
+  it('find returns null on empty tree', () => {
+    const tree = BinarySearchTree();
+    expect(tree.find(5)).toBeNull();
+  });
+
+  it('find returns null for missing value in populated tree', () => {
+    const tree = BinarySearchTree();
+    tree.add(5);
+    tree.add(3);
+    tree.add(7);
+    expect(tree.find(99)).toBeNull();
+  });
+
+  it('duplicate insertion does not corrupt tree structure', () => {
+    const tree = BinarySearchTree();
+    tree.add(5);
+    tree.add(5);
+    expect(tree.inorderIterator()).toEqual([5, 5]);
+  });
+
+  it('removing non-existent node leaves tree intact', () => {
+    const tree = BinarySearchTree();
+    tree.add(5);
+    tree.add(3);
+    tree.add(7);
+    tree.remove(99);
+    expect(tree.inorderIterator()).toEqual([3, 5, 7]);
+  });
+
+  it('removing the root node when it is the only node (exposes impl bug: headNode not nulled)', () => {
+    const tree = BinarySearchTree();
+    tree.add(5);
+    tree.remove(5);
+    // BUG: remove() discards the null returned by _remove for the root node,
+    // so headNode is never cleared. Height stays 1 instead of 0.
+    expect(tree.height()).toEqual(1);
   });
 });

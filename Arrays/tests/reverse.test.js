@@ -1,18 +1,26 @@
 import { expect, test } from 'vitest';
 import Reverse from '../pre/Reverse.js';
 
-test(`Running test for Reverse - expected`, () => {
+test('reverses a normal array', () => {
   expect(Reverse([1, 2, 3])).toEqual([3, 2, 1]);
 });
 
-test(`Running test for reverse - undefined input`, () => {
+test('returns empty array for empty input', () => {
+  expect(Reverse([])).toEqual([]);
+});
+
+test('returns single-element array unchanged', () => {
+  expect(Reverse([42])).toEqual([42]);
+});
+
+test('throws on undefined input', () => {
   expect(() => Reverse()).toThrowError();
 });
 
-test(`Running test for reverse - null input`, () => {
-  expect(() => Reverse()).toThrowError();
+test('throws on null input', () => {
+  expect(() => Reverse(null)).toThrowError();
 });
 
-test(`Running test for reverse - incompatible param`, () => {
-  expect(() => Reverse()).toThrowError();
+test('throws on non-array input', () => {
+  expect(() => Reverse('hello')).toThrowError();
 });

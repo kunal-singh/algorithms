@@ -1,18 +1,23 @@
 import { describe, it, expect } from 'vitest';
 import Graph from '../pre/graph.js';
 
-describe('Test Graph 2', () => {
+/**
+ * A - B - D
+ * |      / \
+ * C - - E - F
+ *
+ * DFS(Iterative): A-C-E-F-D-B
+ * DFS(Recursive): A-B-D-E-C-F
+ * BFS: A-B-C-D-E-F
+ */
+function buildGraph() {
   const g = new Graph();
-
-  // Add Vertices
   g.addVertex('A');
   g.addVertex('B');
   g.addVertex('C');
   g.addVertex('D');
   g.addVertex('E');
   g.addVertex('F');
-
-  // Add Edges
   g.addEdge('A', 'B');
   g.addEdge('A', 'C');
   g.addEdge('B', 'D');
@@ -20,33 +25,27 @@ describe('Test Graph 2', () => {
   g.addEdge('D', 'E');
   g.addEdge('D', 'F');
   g.addEdge('E', 'F');
+  return g;
+}
 
-  /**
-   * A - B - D
-   * |      / \
-   * C - - E - F
-   *
-   * DFS(Iterative): A-C-E-F-D-B
-   * DFS(Recursive): A-B-D-E-C-F
-   * BFS: A-B-C-D-E-F
-   */
+describe('Test Graph 2', () => {
   it('Check iterative DFS List', () => {
-    const iterativeDFSList = g.DFSIterative('A');
-    expect(iterativeDFSList).toEqual(['A', 'C', 'E', 'F', 'D', 'B']);
+    const g = buildGraph();
+    expect(g.DFSIterative('A')).toEqual(['A', 'C', 'E', 'F', 'D', 'B']);
   });
 
   it('Check recursive DFS List', () => {
-    const recursiveDFSList = g.DFS('A');
-    expect(recursiveDFSList).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
+    const g = buildGraph();
+    expect(g.DFS('A')).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
   });
 
   it('Check BFS List', () => {
-    const BFSList = g.BFS('A');
-    expect(BFSList).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+    const g = buildGraph();
+    expect(g.BFS('A')).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
   });
 
   /**
-   * Test After Remove 'B' Vertex
+   * After removing B:
    * A       D
    * |      / \
    * C - - E - F
@@ -55,22 +54,35 @@ describe('Test Graph 2', () => {
    * DFS(Recursive): A-C-E-D-F
    * BFS: A-C-E-D-F
    */
-
-  it('Check iterative DFS List After Removing Vertex B', () => {
+  it('Check iterative DFS List after removing vertex B', () => {
+    const g = buildGraph();
     g.removeVertex('B');
-    const iterativeDFSList = g.DFSIterative('A');
-    expect(iterativeDFSList).toEqual(['A', 'C', 'E', 'F', 'D']);
+    expect(g.DFSIterative('A')).toEqual(['A', 'C', 'E', 'F', 'D']);
   });
 
-  it('Check recursive DFS List After Removing Vertex B', () => {
+  it('Check recursive DFS List after removing vertex B', () => {
+    const g = buildGraph();
     g.removeVertex('B');
-    const recursiveDFSList = g.DFS('A');
-    expect(recursiveDFSList).toEqual(['A', 'C', 'E', 'D', 'F']);
+    expect(g.DFS('A')).toEqual(['A', 'C', 'E', 'D', 'F']);
   });
 
-  it('Check BFS List After Removing Vertex B', () => {
+  it('Check BFS List after removing vertex B', () => {
+    const g = buildGraph();
     g.removeVertex('B');
-    const BFSList = g.BFS('A');
-    expect(BFSList).toEqual(['A', 'C', 'E', 'D', 'F']);
+    expect(g.BFS('A')).toEqual(['A', 'C', 'E', 'D', 'F']);
+  });
+
+  it('traversal from an isolated vertex (no edges) returns just that vertex', () => {
+    const g = new Graph();
+    g.addVertex('X');
+    expect(g.BFS('X')).toEqual(['X']);
+    expect(g.DFS('X')).toEqual(['X']);
+    expect(g.DFSIterative('X')).toEqual(['X']);
+  });
+
+  it('removing a non-existent vertex does not corrupt the graph', () => {
+    const g = buildGraph();
+    g.removeVertex('Z');
+    expect(g.BFS('A')).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
   });
 });

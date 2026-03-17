@@ -88,6 +88,11 @@ describe('SinglyLinkedList', () => {
     expect(list.asArray()).toEqual([]);
   });
 
+  it('removeLast throws on empty list', () => {
+    const list = new LinkedList();
+    expect(() => list.removeLast()).toThrowError();
+  });
+
   it('Check removeFirst', () => {
     const list = new LinkedList();
     list.addLast(1);
@@ -99,6 +104,11 @@ describe('SinglyLinkedList', () => {
 
     expect(list.removeFirst()).toEqual(2);
     expect(list.asArray()).toEqual([]);
+  });
+
+  it('removeFirst throws on empty list', () => {
+    const list = new LinkedList();
+    expect(() => list.removeFirst()).toThrowError();
   });
 
   it('Check removeAt', () => {
@@ -178,6 +188,16 @@ describe('SinglyLinkedList', () => {
     expect(list.indexOf(70)).toBe(-1);
   });
 
+  it('indexOf finds falsy value false', () => {
+    const list = new LinkedList([1, false, 3]);
+    expect(list.indexOf(false)).toBe(1);
+  });
+
+  it('indexOf finds falsy value 0', () => {
+    const list = new LinkedList([1, 0, 3]);
+    expect(list.indexOf(0)).toBe(1);
+  });
+
   it('Check elementAt', () => {
     const list = new LinkedList();
     list.addLast(10);
@@ -189,6 +209,16 @@ describe('SinglyLinkedList', () => {
     expect(list.elementAt(1)).toBe(20);
     expect(list.elementAt(3)).toBe(40);
     expect(list.elementAt(4)).toBe(50);
+  });
+
+  it('elementAt returns null for out-of-bounds index', () => {
+    const list = new LinkedList([1, 2, 3]);
+    expect(list.elementAt(10)).toBeNull();
+  });
+
+  it('elementAt throws on empty list', () => {
+    const list = new LinkedList();
+    expect(() => list.elementAt(0)).toThrowError();
   });
 
   it('Check isEmpty', () => {
