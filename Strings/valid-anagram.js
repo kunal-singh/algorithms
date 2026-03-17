@@ -1,6 +1,4 @@
-// nonsense solution
-const isAnagram = function (s, t) {
-  return s.split(``).sort().join(``) === t.split(``).sort().join(``);
+const isAnagram = function () {
+  throw new Error('Not implemented');
 };
-
 export default isAnagram;
