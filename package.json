@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
+    "practice": "bash practice.sh",
     "prepare": "husky",
     "lint": "npx eslint --quiet --fix",
     "format": "npx prettier '**/*.js' --write"

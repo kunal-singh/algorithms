@@ -1,4 +1,4 @@
-const Reverse = function (array) {
+const Reverse = (array) => {
   if (!Array.isArray(array)) {
     throw new Error('Input must be an array');
   }

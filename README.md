@@ -1,5 +1,9 @@
 # Algorithms
 
+## Practice Sessions
+
+Run `npm run practice` (or `pnpm practice`) from `main` to start a daily session. It creates a branch named `practice/YYYY-MM-DD`, stubs out every solution file (replacing the body with `throw new Error('Not implemented')`), and commits the stubs. From there, run `npm test` and solve.
+
 
 ## Strings
 
